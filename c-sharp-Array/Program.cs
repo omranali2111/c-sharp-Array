@@ -11,9 +11,9 @@ internal class Program
     {
 
 
-        evenodd();
+        //evenodd();
 
-
+        secondLargest();
 
 
 
@@ -88,6 +88,30 @@ internal class Program
            
         }
         WriteLine("there are " + even + " even numbers  and " + odd + " odd numbers");
+    }
+
+    //task4 Write a program that accepts an array of integers and finds the second 
+    //largest element in the array
+
+    static void secondLargest()
+    {
+        int[] num = { 1,20, 5, 7, 9, 19,22 };
+        int num1 = int.MinValue, num2 = int.MinValue;
+
+        for (int i = 0; i < num.Length; i++)
+        {
+            int s = num[i];
+            if (s> num1)
+            {
+                num2 =num1;
+                num1 = s;
+            }
+            else if (s> num2)
+                num2= s;
+
+
+        }
+        WriteLine(num2);
     }
 
 }
