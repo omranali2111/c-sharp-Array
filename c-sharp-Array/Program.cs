@@ -3,6 +3,7 @@
 using System;
 using System.Xml.Linq;
 
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -35,6 +36,10 @@ internal class Program
 
         //task2:Write a program that accepts an array of integers and finds the maximum 
         //and minimum elements in the array.
+        int[] num1 = { 1, 5, 7, 9, 19 };
+
+        WriteLine("Minimum number is " + num1.Min());
+       WriteLine("Maximum number is " + num1.Max());
 
     }
     
