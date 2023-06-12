@@ -4,6 +4,7 @@ using System;
 using System.Xml.Linq;
 using System.Security.Cryptography;
 using System.ComponentModel;
+using System.Data.Common;
 
 
 internal class Program
@@ -20,15 +21,43 @@ internal class Program
 
         //towDArray();
 
-        //sumOfElement();
+       int[,] arr= new int[4, 4] {
+                                    { 0, 1, 2, 3} ,
+                                 { 4, 5, 6, 7} ,
+                                 { 8, 9, 10, 11} ,
+                                  { 12, 13, 14, 15}
+                                         };
 
-        averageOfEachRow();
+        float total = sumOfElement(arr);
+       WriteLine("the sum of all element is {0}", total);
 
+        WriteLine("************************************");
+        float[] rowAverages = averageOfEachRow(arr);
 
+        WriteLine("Row averages:");
+
+        for (int i = 0; i < rowAverages.Length; i++)
+        {
+            WriteLine("Row {0}: {1}", i + 1, rowAverages[i]);
+        }
+        WriteLine("************************************");
+        WriteLine("enter the target number");
+        int target= int.Parse(ReadLine());
+        WriteLine(searchForElement(arr, target));
+        (int row, int column) = searchForElement(arr, target);
+
+        if (row != -1 && column != -1)
+        {
+            WriteLine("Target {0} found at position (Row: {1}, Column: {2})", target, row, column);
+        }
+        else
+        {
+            WriteLine("Target {0} not found in the array.", target);
+        }
 
 
     }
-
+    
     static void sumofNumbers()
     {
 
@@ -181,74 +210,88 @@ internal class Program
         }
       
     }
+  
     //Exercise 1: Calculate the Sum of all Elements
     //Write a program that takes a 2D array of integers as input 
     //and calculates the sum of all the elements in the 
     //array.Display the sum as the output.
-
-    static void sumOfElement()
+  
+    static float sumOfElement(int[,] arr)
     {
-        int[,] a = new int[4, 4] {
-                                {0, 1, 2, 3} ,
-                                 {4, 5, 6, 7} ,
-                                 {8, 9, 10, 11} ,
-                                  {12, 13, 14, 15}
-                                    };
-
-        int sum = 0;
-        for (int i = 0; i < 4; i++)
+       int sum = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
         {
             //Console.WriteLine();
 
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < arr.GetLength(1); j++)
             {
-                Console.Write(a[i, j]+" ");
+                //Console.Write(arr[i, j]+" ");
 
-                sum = sum + a[i, j];
+                sum = sum + arr[i, j];
             }
-            Console.WriteLine();
+           // Console.WriteLine();
         }
-        Console.WriteLine("the sum of all element is {0}",sum);
+       
+        return sum;
     }
-
+  
 //Exercise 2: Find the Average of each Row
 //Write a program that takes a 2D array of integers as
 //input and calculates the average value for each row.
 //Display the average value of each row as the output.
 
 
-    static void averageOfEachRow()
+    static float[] averageOfEachRow(int[,] arr)
     {
-        int[,] a = new int[4, 4] {
-                                {0, 1, 2, 3} ,
-                                 {4, 5, 6, 7} ,
-                                 {8, 9, 10, 11} ,
-                                  {12, 13, 14, 15}
-                                    };
-
-        float average = 0;
-        float sum = 0;
        
-        for (int i = 0; i < 4; i++)
-        {
-           
-            
-           
-            
 
-            for (int j = 0; j < 4; j++)
+     
+        float[] average = new float[arr.GetLength(0)];
+
+        for (int row = 0; row < arr.GetLength(0); row++)
+        {
+            float sum = 0;
+            for (int column= 0; column < arr.GetLength(1); column++)
             {
-                sum = sum + a[i, j];
-                average = sum / 4;
-                Console.Write(a[i, j] + " ");
-               
+                sum += arr[row, column];
+              
+            }
+            average[row] = sum / arr.GetLength(1);
+
+        }
+        return average;
+
+
+    }
+    // Exercise 3: Search for an Element
+    //Write a program that takes a 2D array of integers as
+    //input and a target number.Search for the target number
+    //in the array and display its position(row and column) if found.
+    //If the target number is not found, display a message indicating its absence.
+
+    static (int,int) searchForElement(int[,] arr, int target)
+    {
+
+        for (int row = 0; row < arr.GetLength(0); row++)
+        {
+
+            for (int column = 0; column < arr.GetLength(1); column++)
+            {
+
+                if (arr[row, column] == target) 
+                {
+                    return (row, column);
+                }
+
 
 
             }
-            Console.WriteLine("the average of row number {0} is {1}", i + 1, average);
+
         }
-       
-        
+
+        return (-1, -1);
+
 
     }
+
 }
