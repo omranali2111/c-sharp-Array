@@ -20,7 +20,9 @@ internal class Program
 
         //towDArray();
 
-        sumOfElement();
+        //sumOfElement();
+
+        averageOfEachRow();
 
 
 
@@ -207,5 +209,46 @@ internal class Program
             Console.WriteLine();
         }
         Console.WriteLine("the sum of all element is {0}",sum);
+    }
+
+//Exercise 2: Find the Average of each Row
+//Write a program that takes a 2D array of integers as
+//input and calculates the average value for each row.
+//Display the average value of each row as the output.
+
+
+    static void averageOfEachRow()
+    {
+        int[,] a = new int[4, 4] {
+                                {0, 1, 2, 3} ,
+                                 {4, 5, 6, 7} ,
+                                 {8, 9, 10, 11} ,
+                                  {12, 13, 14, 15}
+                                    };
+
+        float average = 0;
+        float sum = 0;
+       
+        for (int i = 0; i < 4; i++)
+        {
+           
+            
+           
+            
+
+            for (int j = 0; j < 4; j++)
+            {
+                sum = sum + a[i, j];
+                average = sum / 4;
+                Console.Write(a[i, j] + " ");
+               
+
+
+            }
+            Console.WriteLine("the average of row number {0} is {1}", i + 1, average);
+        }
+       
+        
+
     }
 }
