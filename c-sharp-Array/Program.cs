@@ -13,7 +13,11 @@ internal class Program
 
         //evenodd();
 
-        secondLargest();
+        //secondLargest();
+
+        //removeDublicate();
+
+        towDArray();
 
 
 
@@ -111,7 +115,63 @@ internal class Program
 
 
         }
-        WriteLine(num2);
+        WriteLine("second largest element in the array is "+num2);
+    }
+    //task5 Write a program that accepts an array of integers and removes all the 
+    //duplicate elements
+    // not complete 
+
+    static void removeDublicate()
+    {
+        int[] num = { 1, 20, 5, 7, 9,9, 19, 22 };
+      
+        int Remove = 0;
+        List<int> tmp = new List<int>(num);
+
+        for (int i = 0; i < num.Length; i++)
+        {
+            for (int j = 0; j < num.Length; j++)
+            {
+                if (num[i] == num[j])
+                {
+                    break;
+
+                }
+              else  if (num[i] != num[j])
+                {
+                   Remove++;
+                }
+            }
+            //WriteLine(num[i]);
+            tmp.RemoveAt(Remove);
+        }
+        WriteLine(tmp);
     }
 
+
+    //2D array
+   static void towDArray()
+    {
+        //A multidimensional array is basically an array of arrays.
+        int[,] numbers = new int[4,2];//4 row x 2columns
+        numbers[0,0] =0;
+        numbers[0,1] = 1;
+        numbers[1,0] = 2;
+        numbers[1,1] = 3;
+        
+        
+        
+
+        
+
+        for(int row=0; row < numbers.GetLength(0); row++)
+        { 
+            for(int col=0; col < numbers.GetLength(1); col++)
+            {
+                WriteLine(numbers[row,col]);
+            }
+            //WriteLine();
+        }
+      
+    }
 }
