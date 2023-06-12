@@ -3,6 +3,7 @@
 using System;
 using System.Xml.Linq;
 using System.Security.Cryptography;
+using System.ComponentModel;
 
 
 internal class Program
@@ -17,7 +18,9 @@ internal class Program
 
         //removeDublicate();
 
-        towDArray();
+        //towDArray();
+
+        sumOfElement();
 
 
 
@@ -158,20 +161,51 @@ internal class Program
         numbers[0,1] = 1;
         numbers[1,0] = 2;
         numbers[1,1] = 3;
-        
+       
         
         
 
         
 
         for(int row=0; row < numbers.GetLength(0); row++)
-        { 
-            for(int col=0; col < numbers.GetLength(1); col++)
+
+        {
+            Console.WriteLine();
+            for (int col=0; col < numbers.GetLength(1); col++)
             {
-                WriteLine(numbers[row,col]);
+                Write(numbers[row,col]+" ");
             }
             //WriteLine();
         }
       
+    }
+    //Exercise 1: Calculate the Sum of all Elements
+    //Write a program that takes a 2D array of integers as input 
+    //and calculates the sum of all the elements in the 
+    //array.Display the sum as the output.
+
+    static void sumOfElement()
+    {
+        int[,] a = new int[4, 4] {
+                                {0, 1, 2, 3} ,
+                                 {4, 5, 6, 7} ,
+                                 {8, 9, 10, 11} ,
+                                  {12, 13, 14, 15}
+                                    };
+
+        int sum = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            //Console.WriteLine();
+
+            for (int j = 0; j < 4; j++)
+            {
+                Console.Write(a[i, j]+" ");
+
+                sum = sum + a[i, j];
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine("the sum of all element is {0}",sum);
     }
 }
